@@ -1,4 +1,6 @@
-﻿@page "/counter"
+﻿@using Crypto;
+
+@page "/counter"
 
 <PageTitle>Counter</PageTitle>
 
@@ -8,12 +10,36 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+<label>Input:</label>
+<input @bind="inputText"/>
+
+<label>Output:</label>
+<input @bind="outputText" />
+
+<button class="btn btn-primary" @onclick="Encrypt">Encrypt</button>
+<button class="btn btn-primary" @onclick="Decrypt">Decrypt</button>
 @code {
     private int currentCount = 0;
+
+    private string inputText;
+
+    private string outputText;
 
     private void IncrementCount()
     {
         currentCount++;
+    }
+
+    private void Encrypt()
+    {
+        var result = Crypto.Encrypt(inputText, "Test123");
+        outputText = result;
+    }
+
+    private void Decrypt()
+    {
+        var result = Crypto.Decrypt(inputText, "Test123");
+        outputText = result;
     }
 
 }

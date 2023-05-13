@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<efcore p1:name="AccountsModel" p1:Guid="e06564d9-b95c-44f1-a5a2-4ef607c519ce" xmlns:p1="http://devart.com/schemas/EntityDeveloper/1.0">
+  <class name="AccountLogin" entity-set="AccountLogins" table="AccountLogins" schema="dbo" p1:Guid="096dd630-c57c-4e6a-9399-b1aa42f697e1">
+    <id name="LoginId" type="Int32" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="cbe310bf-c611-4386-ab66-9f4e18130d9e">
+      <column name="loginId" not-null="True" precision="10" scale="0" sql-type="int" p1:unicode="False" />
+    </id>
+    <property name="Account" type="String" p1:nullable="True" p1:ValidateMaxLength="100" p1:ValidateRequired="false" p1:Guid="ca008100-404b-460e-b10b-6dc16f021a46">
+      <column name="account" not-null="False" length="100" sql-type="varchar" p1:unicode="False" />
+    </property>
+    <property name="Username" type="String" p1:ValidateMaxLength="50" p1:ValidateRequired="true" p1:Guid="1d9b702d-2a2d-4bf2-903f-e5d89ded9ddd">
+      <column name="username" not-null="True" length="50" sql-type="varchar" p1:unicode="False" />
+    </property>
+    <property name="Password" type="String" p1:ValidateMaxLength="150" p1:ValidateRequired="true" p1:Guid="a89101b0-7173-459e-8edf-ce470166df74">
+      <column name="password" not-null="True" length="150" sql-type="varchar" p1:unicode="False" />
+    </property>
+    <property name="Website" type="String" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="6b149f9c-7e02-462b-b761-fac0ef1bdac5">
+      <column name="website" not-null="False" sql-type="varchar(max)" p1:unicode="False" />
+    </property>
+    <property name="FkMasterId" type="Int32" p1:ValidateRequired="true" p1:Guid="0793d032-2860-447d-8828-8885414ec965">
+      <column name="fk_masterId" not-null="True" precision="10" scale="0" sql-type="int" p1:unicode="False" />
+    </property>
+  </class>
+  <class name="MasterAccount" entity-set="MasterAccounts" table="MasterAccounts" schema="dbo" p1:Guid="7e0f2697-9ebe-44c0-bbba-2c946a444da8">
+    <id name="MasterId" type="Int32" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="fffa21dd-6ac7-493c-988e-e1e4636f86cb">
+      <column name="masterId" not-null="True" precision="10" scale="0" sql-type="int" p1:unicode="False" />
+    </id>
+    <property name="Username" type="String" p1:ValidateMaxLength="50" p1:ValidateRequired="true" p1:Guid="620a6c33-b9e4-4fcb-b811-c2ad65442abb">
+      <column name="username" not-null="True" length="50" sql-type="varchar" p1:unicode="False" />
+    </property>
+    <property name="Password" type="String" p1:ValidateRequired="true" p1:Guid="e7257c2c-1109-4139-96d0-51a0370efa34">
+      <column name="password" not-null="True" sql-type="varchar(max)" p1:unicode="False" />
+    </property>
+    <property name="Email" type="String" p1:ValidateMaxLength="100" p1:ValidateRequired="true" p1:Guid="0d020bf5-2b10-44bc-8a73-db41029d8304">
+      <column name="email" not-null="True" length="100" sql-type="varchar" p1:unicode="False" />
+    </property>
+  </class>
+  <associations>
+    <association name="MasterAccount_AccountLogin" cardinality="OneToMany" p1:Guid="6bc33073-6372-41b2-8a69-0dbd49161440">
+      <end1 multiplicity="One" name="MasterAccount" class="AccountLogin" relation-class="MasterAccount" constrained="True" lazy="False" p1:Guid="0d44c06c-1af3-43fc-97fd-daf4e7cefc9e">
+        <property name="MasterId" />
+      </end1>
+      <end2 multiplicity="Many" name="AccountLogins" class="MasterAccount" relation-class="AccountLogin" lazy="False" p1:Guid="58657c7a-dcea-42c7-ab69-c1311b0cd63f">
+        <property name="FkMasterId" />
+      </end2>
+    </association>
+  </associations>
+</efcore>
