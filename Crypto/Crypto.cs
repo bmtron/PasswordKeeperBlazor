@@ -14,7 +14,7 @@ public class Crypto
         var saltStringBytes = Generate128BitsOfRandomEntropy();
         var ivStringBytes = Generate128BitsOfRandomEntropy();
         var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-        using (var password = new Rfc2898DeriveBytes(passPhrase, saltStringBytes, DerivationIterations, HashAlgorithmName.SHA256))
+        using (var password = new Rfc2898DeriveBytes(passPhrase, saltStringBytes, DerivationIterations, HashAlgorithmName.SHA1))
         {
             var keyBytes = password.GetBytes(KeySize / 8);
             using (var symmetricKey = Aes.Create())
@@ -57,7 +57,7 @@ public class Crypto
         var cipherTextBytes = cipherTextBytesWithSaltAndIv.Skip((KeySize / 8) * 2)
             .Take(cipherTextBytesWithSaltAndIv.Length - ((KeySize / 8) * 2)).ToArray();
 
-        using (var password = new Rfc2898DeriveBytes(passPhrase, saltStringBytes, DerivationIterations, HashAlgorithmName.SHA256))
+        using (var password = new Rfc2898DeriveBytes(passPhrase, saltStringBytes, DerivationIterations, HashAlgorithmName.SHA1))
         {
             var keyBytes = password.GetBytes(KeySize / 8);
             using (var symmetricKey = Aes.Create())

@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using PasswordKeeperBlazor.Areas.Identity;
 using PasswordKeeperBlazor.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.JSInterop;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,7 @@ builder.Services
     .AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
 builder.Services.AddScoped<AccountsService>();
 builder.Services.AddSingleton<WeatherForecastService>();
+//builder.Services.AddScoped<IJSRuntime>();
 
 var app = builder.Build();
 

@@ -1,5 +1,7 @@
 ﻿using System;
 using AccountsModel;
+using PasswordKeeperBlazor.DataObjects;
+
 namespace PasswordKeeperBlazor.Data
 {
 	public class AccountsService

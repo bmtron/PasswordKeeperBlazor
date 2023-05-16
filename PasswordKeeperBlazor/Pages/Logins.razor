@@ -1,16 +1,23 @@
 ﻿@using Data;
 @using AccountsModel;
+@using Microsoft.AspNetCore.DataProtection
+@using PasswordKeeperBlazor.DataObjects
 
 @page "/logins"
 
 @inject AccountsService accountService
 @inject AuthenticationStateProvider authState
+@inject IJSRuntime js
 <AuthorizeView>
     <Authorized>
         <h3>Component1</h3>
         @foreach (var account in userLogins)
          {
-            <div>@account.Username</div>
+             <div>@account.Username</div>
+             <div class="password-container">
+                 <div class="password-div">@account.Password</div>
+                 <button class="btn-show-password">Show Password</button>
+             </div>
          }
 
     </Authorized>
@@ -44,5 +51,16 @@
         return base.OnInitializedAsync();
     }
 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await js.InvokeVoidAsync("buttonHelper");
+
+    }
+
+    [JSInvokable]
+    public static Task<string> DecryptString(string pass)
+    {
+        return Task.FromResult(Crypto.Crypto.Decrypt(pass, Crypto.Secrets.MASTER_KEY));
+    }
 }
 
