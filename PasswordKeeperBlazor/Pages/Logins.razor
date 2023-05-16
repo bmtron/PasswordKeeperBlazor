@@ -1,0 +1,48 @@
+﻿@using Data;
+@using AccountsModel;
+
+@page "/logins"
+
+@inject AccountsService accountService
+@inject AuthenticationStateProvider authState
+<AuthorizeView>
+    <Authorized>
+        <h3>Component1</h3>
+        @foreach (var account in userLogins)
+         {
+            <div>@account.Username</div>
+         }
+
+    </Authorized>
+    <NotAuthorized>
+        <h1>Error: Not Authorized</h1>
+    </NotAuthorized>
+</AuthorizeView>
+
+
+
+@code {
+
+    private int? authenticatedMasterId;
+    private List<AccountLogin> userLogins;
+
+    protected override Task OnInitializedAsync()
+    {
+        var authenticationState = authState.GetAuthenticationStateAsync();
+        var authenticationResultUser = authenticationState.Result.User;
+        var validatedUser = authenticationResultUser.Identities.First().IsAuthenticated ?
+            authenticationResultUser.Identities.First().Claims.First().Value : null;
+        if (validatedUser != null)
+        {
+            authenticatedMasterId = accountService.GetMasterId(validatedUser);
+        }
+
+        if (authenticatedMasterId != null)
+        {
+            userLogins = accountService.GetAccountsByMasterId((int) authenticatedMasterId);
+        }
+        return base.OnInitializedAsync();
+    }
+
+}
+

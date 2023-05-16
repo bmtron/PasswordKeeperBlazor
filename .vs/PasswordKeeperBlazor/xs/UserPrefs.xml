@@ -1,0 +1,43 @@
+﻿<Properties StartupConfiguration="{31F7CABA-EA0C-409F-AB03-8BB74D72DDE9}|https">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="PasswordKeeperBlazor/Pages/Logins.razor">
+    <Files>
+      <File FileName="PasswordKeeperBlazor/App.razor" Line="14" Column="32" />
+      <File FileName="PasswordKeeperBlazor/Properties/launchSettings.json" Line="1" Column="1" />
+      <File FileName="PasswordKeeperBlazor/Data/AccountsService.cs" Line="34" Column="1" />
+      <File FileName="PasswordKeeperBlazor/Pages/Counter.razor" Line="34" Column="38" />
+      <File FileName="PasswordKeeperBlazor/Pages/FetchData.razor" Line="1" Column="1" />
+      <File FileName="PasswordKeeperBlazor/Pages/Index.razor" Line="1" Column="1" />
+      <File FileName="PasswordKeeperBlazor/Program.cs" Line="25" Column="47" />
+      <File FileName="PasswordKeeperBlazor/appsettings.json" Line="3" Column="171" />
+      <File FileName="Accounts/Accounts.AccountsModel.cs" Line="49" Column="222" />
+      <File FileName="PasswordKeeperBlazor/Pages/Logins.razor" Line="17" Column="20" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="PasswordKeeperBlazor" expanded="True">
+            <Node name="Accounts" expanded="True" />
+            <Node name="Crypto" expanded="True" />
+            <Node name="PasswordKeeperBlazor" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="ProjectDependencies" expanded="True" />
+              </Node>
+              <Node name="Data" expanded="True" />
+              <Node name="Pages" expanded="True">
+                <Node name="Logins.razor" selected="True" />
+              </Node>
+              <Node name="Properties" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.PasswordKeeperBlazor PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+</Properties>

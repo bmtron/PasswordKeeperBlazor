@@ -1,4 +1,7 @@
 ﻿@using Crypto;
+@using Data;
+
+@inject AccountsService accountService; 
 
 @page "/counter"
 
@@ -28,6 +31,7 @@
     private void IncrementCount()
     {
         currentCount++;
+        accountService.GetAccounts();
     }
 
     private void Encrypt()
